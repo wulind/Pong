@@ -95,6 +95,12 @@ helloworld: /home/f85/lywu01/SFML/lib/libsfml-window-d.so
 helloworld: /home/f85/lywu01/SFML/lib/libsfml-system-d.so
 helloworld: /home/f85/lywu01/SFML/lib/libsfml-audio-d.so
 helloworld: /home/f85/lywu01/SFML/lib/libsfml-network-d.so
+helloworld: libpong_core.a
+helloworld: /home/f85/lywu01/SFML/lib/libsfml-graphics-d.so
+helloworld: /home/f85/lywu01/SFML/lib/libsfml-window-d.so
+helloworld: /home/f85/lywu01/SFML/lib/libsfml-system-d.so
+helloworld: /home/f85/lywu01/SFML/lib/libsfml-audio-d.so
+helloworld: /home/f85/lywu01/SFML/lib/libsfml-network-d.so
 helloworld: CMakeFiles/helloworld.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/f85/lywu01/cs437/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable helloworld"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/helloworld.dir/link.txt --verbose=$(VERBOSE)
