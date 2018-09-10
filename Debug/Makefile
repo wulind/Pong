@@ -123,6 +123,19 @@ helloworld/fast:
 	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
 .PHONY : helloworld/fast
 
+#=============================================================================
+# Target rules for targets named pong_core
+
+# Build rule for target.
+pong_core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pong_core
+.PHONY : pong_core
+
+# fast build rule for target.
+pong_core/fast:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/build
+.PHONY : pong_core/fast
+
 bin/helloworld.o: bin/helloworld.cpp.o
 
 .PHONY : bin/helloworld.o
@@ -150,6 +163,60 @@ bin/helloworld.cpp.s:
 	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.s
 .PHONY : bin/helloworld.cpp.s
 
+src/computerView.o: src/computerView.cpp.o
+
+.PHONY : src/computerView.o
+
+# target to build an object file
+src/computerView.cpp.o:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/computerView.cpp.o
+.PHONY : src/computerView.cpp.o
+
+src/computerView.i: src/computerView.cpp.i
+
+.PHONY : src/computerView.i
+
+# target to preprocess a source file
+src/computerView.cpp.i:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/computerView.cpp.i
+.PHONY : src/computerView.cpp.i
+
+src/computerView.s: src/computerView.cpp.s
+
+.PHONY : src/computerView.s
+
+# target to generate assembly for a file
+src/computerView.cpp.s:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/computerView.cpp.s
+.PHONY : src/computerView.cpp.s
+
+src/userView.o: src/userView.cpp.o
+
+.PHONY : src/userView.o
+
+# target to build an object file
+src/userView.cpp.o:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/userView.cpp.o
+.PHONY : src/userView.cpp.o
+
+src/userView.i: src/userView.cpp.i
+
+.PHONY : src/userView.i
+
+# target to preprocess a source file
+src/userView.cpp.i:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/userView.cpp.i
+.PHONY : src/userView.cpp.i
+
+src/userView.s: src/userView.cpp.s
+
+.PHONY : src/userView.s
+
+# target to generate assembly for a file
+src/userView.cpp.s:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/userView.cpp.s
+.PHONY : src/userView.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +226,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... helloworld"
+	@echo "... pong_core"
 	@echo "... bin/helloworld.o"
 	@echo "... bin/helloworld.i"
 	@echo "... bin/helloworld.s"
+	@echo "... src/computerView.o"
+	@echo "... src/computerView.i"
+	@echo "... src/computerView.s"
+	@echo "... src/userView.o"
+	@echo "... src/userView.i"
+	@echo "... src/userView.s"
 .PHONY : help
 
 

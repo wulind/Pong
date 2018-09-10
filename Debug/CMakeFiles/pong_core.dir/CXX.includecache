@@ -676,19 +676,25 @@ SFML/Config.hpp
 
 /home/f85/lywu01/SFML/include/SFML/Window/WindowStyle.hpp
 
-/home/f85/lywu01/cs437/pong/bin/helloworld.cpp
+/home/f85/lywu01/cs437/pong/include/computerView.h
 SFML/Graphics.hpp
 -
-../include/userView.h
+
 /home/f85/lywu01/cs437/pong/include/userView.h
+SFML/Graphics.hpp
+-
+
+/home/f85/lywu01/cs437/pong/src/computerView.cpp
 ../include/computerView.h
 /home/f85/lywu01/cs437/pong/include/computerView.h
-
-/home/f85/lywu01/cs437/pong/include/computerView.h
 SFML/Graphics.hpp
 -
 
+/home/f85/lywu01/cs437/pong/src/userView.cpp
+../include/userView.h
 /home/f85/lywu01/cs437/pong/include/userView.h
 SFML/Graphics.hpp
+-
+iostream
 -
 
