@@ -2,12 +2,14 @@
 #include "../include/userView.h"
 #include "../include/computerView.h"
 #include "../include/ballView.h"
+#include <iostream>
 
 int main(int argc, char** argv)
 {
   //Create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong", {sf::Style::Close|sf::Style::Titlebar}); //Style doesn't allow for resizing
 
+  
   //Game state
   //TODO: have game state
   
@@ -40,7 +42,7 @@ int main(int argc, char** argv)
         }
     }
 
-    ballView -> updateSprite(ballView -> findAngle());
+    ballView -> updateSprite(ballView -> findAngle(userView -> getSpriteOrigin()));
     
     //Clear screen and fill with black
     App.clear(sf::Color::Black);
@@ -54,7 +56,7 @@ int main(int argc, char** argv)
     App.display();
     
   }
-
+  
   //Done.
   return 0;
 }

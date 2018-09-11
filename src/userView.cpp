@@ -11,6 +11,10 @@ UserView::UserView(sf::RenderWindow *App, sf::Texture texture){
     userPaddle.setPosition(10.0, 245.0);//TODO: put in middle of screen
 }
 
+sf::Vector2f UserView::getSpriteOrigin(){
+    return this -> userPaddle.getOrigin();
+}
+
 void UserView::drawSprite(){
     (this -> App) -> draw(this -> userPaddle);
 }

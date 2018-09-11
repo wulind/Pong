@@ -22,7 +22,7 @@ void BallView::updateSprite(float angle[]){
     this -> ball.move(angle[0], angle[1]);
 }
 
-float* BallView::findAngle(){//direction is 1 if going right (towards computer), -1 if going left (towards user)
+float* BallView::findAngle(sf::Vector2f paddleOrigin){//direction is 1 if going right (towards computer), -1 if going left (towards user)
     float angle[2] = {0.1, 0.0};
     this -> direction = this -> getDirection();
     angle[0] *= this -> direction;

@@ -12,8 +12,10 @@ class UserView{
         
     public:
         UserView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
+        sf::Vector2f getSpriteOrigin();
         void drawSprite();
         void updateSprite(sf::Event event);
+        
 };
 
 #endif 

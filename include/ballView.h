@@ -16,7 +16,7 @@ class BallView{
         BallView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
         void drawSprite();
         void updateSprite(float angle[]);
-        float* findAngle();
+        float* findAngle(sf::Vector2f paddleOrigin);
     
 };
 
