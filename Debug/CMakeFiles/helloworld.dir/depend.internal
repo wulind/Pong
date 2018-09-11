@@ -77,5 +77,6 @@ CMakeFiles/helloworld.dir/bin/helloworld.cpp.o
  /home/f85/lywu01/SFML/include/SFML/Window/WindowHandle.hpp
  /home/f85/lywu01/SFML/include/SFML/Window/WindowStyle.hpp
  /home/f85/lywu01/cs437/pong/bin/helloworld.cpp
+ /home/f85/lywu01/cs437/pong/include/ballView.h
  /home/f85/lywu01/cs437/pong/include/computerView.h
  /home/f85/lywu01/cs437/pong/include/userView.h

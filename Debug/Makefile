@@ -163,6 +163,33 @@ bin/helloworld.cpp.s:
 	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.s
 .PHONY : bin/helloworld.cpp.s
 
+src/ballView.o: src/ballView.cpp.o
+
+.PHONY : src/ballView.o
+
+# target to build an object file
+src/ballView.cpp.o:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ballView.cpp.o
+.PHONY : src/ballView.cpp.o
+
+src/ballView.i: src/ballView.cpp.i
+
+.PHONY : src/ballView.i
+
+# target to preprocess a source file
+src/ballView.cpp.i:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ballView.cpp.i
+.PHONY : src/ballView.cpp.i
+
+src/ballView.s: src/ballView.cpp.s
+
+.PHONY : src/ballView.s
+
+# target to generate assembly for a file
+src/ballView.cpp.s:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ballView.cpp.s
+.PHONY : src/ballView.cpp.s
+
 src/computerView.o: src/computerView.cpp.o
 
 .PHONY : src/computerView.o
@@ -230,6 +257,9 @@ help:
 	@echo "... bin/helloworld.o"
 	@echo "... bin/helloworld.i"
 	@echo "... bin/helloworld.s"
+	@echo "... src/ballView.o"
+	@echo "... src/ballView.i"
+	@echo "... src/ballView.s"
 	@echo "... src/computerView.o"
 	@echo "... src/computerView.i"
 	@echo "... src/computerView.s"
