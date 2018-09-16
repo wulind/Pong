@@ -8,11 +8,11 @@ UserView::UserView(sf::RenderWindow *App, sf::Texture texture){
     this -> texture = texture;
     this -> userPaddle.setTexture(texture);
     userPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
-    userPaddle.setPosition(10.0, 245.0);//TODO: put in middle of screen
+    userPaddle.setPosition(10.0, this -> App -> getSize().y/2 - 40);
 }
 
-sf::Vector2f UserView::getSpriteOrigin(){
-    return this -> userPaddle.getOrigin();
+sf::Vector2f UserView::getSpritePosition(){
+    return this -> userPaddle.getPosition();
 }
 
 void UserView::drawSprite(){
@@ -25,7 +25,6 @@ void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
             if(this -> userPaddle.getPosition().y > 0){
                 this -> userPaddle.move(0.0, -10.0);
             }
-            
             break;
         case sf::Keyboard::Down:
             if(this -> userPaddle.getPosition().y < 516){//TODO: make this so that it compares to the window and not a hardcoded value
@@ -33,5 +32,5 @@ void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
             }
             
             break;
-    } 
+    }
 }

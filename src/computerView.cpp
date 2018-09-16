@@ -7,7 +7,11 @@ ComputerView::ComputerView(sf::RenderWindow *App, sf::Texture texture){
     this -> texture = texture;
     this -> computerPaddle.setTexture(texture);
     computerPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
-    computerPaddle.setPosition(780.0, 245.0);//TODO: put in middle of screen
+    computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);//TODO: put in middle of screen
+}
+
+sf::Vector2f ComputerView::getSpritePosition(){
+    return this -> computerPaddle.getPosition();
 }
 
 void ComputerView::drawSprite(){

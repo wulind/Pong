@@ -42,7 +42,12 @@ int main(int argc, char** argv)
         }
     }
 
-    ballView -> updateSprite(ballView -> findAngle(userView -> getSpriteOrigin()));
+    if(ballView -> direction < 0){
+        ballView -> updateSprite(userView -> getSpritePosition());
+    }else{
+        ballView -> updateSprite(computerView -> getSpritePosition());
+    }
+    
     
     //Clear screen and fill with black
     App.clear(sf::Color::Black);
