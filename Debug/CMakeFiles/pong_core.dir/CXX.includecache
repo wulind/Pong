@@ -695,6 +695,8 @@ SFML/Graphics.hpp
 -
 iostream
 -
+typeinfo
+-
 
 /home/f85/lywu01/cs437/pong/src/computerView.cpp
 ../include/computerView.h

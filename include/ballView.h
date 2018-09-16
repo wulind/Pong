@@ -9,14 +9,15 @@ class BallView{
         sf::RenderWindow *App;
         sf::Sprite ball;
         sf::Texture texture;
-        int getDirection();
+        float angle[2];
+        int detectCollision(sf::Vector2f paddleOrigin);
         
     public:
         int direction;//1 if going towards computer, -1 if going towards user
         BallView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
         void drawSprite();
-        void updateSprite(float angle[]);
-        float* findAngle();
+        void updateSprite(sf::Vector2f paddleLocation);
+        void findAngle();
     
 };
 
