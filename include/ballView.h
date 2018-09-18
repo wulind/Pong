@@ -13,7 +13,7 @@ class BallView{
         int detectCollision(sf::Vector2f paddleOrigin);
         
     public:
-        int direction;//1 if going towards computer, -1 if going towards user
+        int direction;//1 if going towards computer, -1 if going towards user,
         
         BallView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
         sf::Vector2f getSpritePosition();

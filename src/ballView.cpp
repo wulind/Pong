@@ -26,7 +26,8 @@ void BallView::drawSprite(){
 }
 
 void BallView::resetSprite(){
-    ball.setPosition(this -> App -> getSize().x/2, this -> App -> getSize().y/2);
+    this -> direction = -1;
+    this -> ball.setPosition(this -> App -> getSize().x/2, this -> App -> getSize().y/2);
 }
 
 /* Moves ball across screen
@@ -38,7 +39,9 @@ int BallView::updateSprite(sf::Vector2f paddleLocation){
         this -> findAngle(paddleLocation);
     }
     
-    if(ball.getPosition().x < 0 || ball.getPosition().x > this -> App -> getSize().x){//if ball is off screen
+    
+    
+    if(ball.getPosition().x < 0 || ball.getPosition().x > this -> App -> getSize().x){//if ball is off side of screen
         //TODO: make get position a function?
         
         this -> angle[0] = -0.1;
@@ -47,7 +50,11 @@ int BallView::updateSprite(sf::Vector2f paddleLocation){
         return 1;
     }
     
-    this -> ball.move(this -> angle[0], this -> angle[1]);
+    if(ball.getPosition().y < 0 || ball.getPosition().y > this -> App -> getSize().y){
+        this -> angle[1] *= -1;
+    }
+    
+    this -> ball.move(this -> angle[0], this -> angle[1]); //TODO: move this before the if statements
     
     return 2;
     
