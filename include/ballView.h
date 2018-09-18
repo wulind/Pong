@@ -14,10 +14,13 @@ class BallView{
         
     public:
         int direction;//1 if going towards computer, -1 if going towards user
+        
         BallView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
+        sf::Vector2f getSpritePosition();
         void drawSprite();
-        void updateSprite(sf::Vector2f paddleLocation);
-        void findAngle();
+        void resetSprite();
+        int updateSprite(sf::Vector2f paddleLocation);
+        void findAngle(sf::Vector2f paddleLocation);
     
 };
 

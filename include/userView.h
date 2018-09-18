@@ -14,6 +14,7 @@ class UserView{
         UserView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
         sf::Vector2f getSpritePosition();
         void drawSprite();
+        void resetSprite();
         void updateSprite(sf::Event event);
         
 };
