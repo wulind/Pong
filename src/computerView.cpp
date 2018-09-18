@@ -6,8 +6,8 @@ ComputerView::ComputerView(sf::RenderWindow *App, sf::Texture texture){
     
     this -> texture = texture;
     this -> computerPaddle.setTexture(texture);
-    computerPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
-    computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);//TODO: put in middle of screen
+    this -> computerPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
+    this -> computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);
 }
 
 sf::Vector2f ComputerView::getSpritePosition(){
@@ -16,4 +16,12 @@ sf::Vector2f ComputerView::getSpritePosition(){
 
 void ComputerView::drawSprite(){
     (this -> App) -> draw(this -> computerPaddle);
+}
+
+void ComputerView::resetSprite(){
+    this -> computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);
+}
+
+void ComputerView::updateSprite(float ballHeight){
+    this -> computerPaddle.setPosition(780.0, ballHeight);
 }

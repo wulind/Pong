@@ -11,7 +11,10 @@ int main(int argc, char** argv)
 
   
   //Game state
-  //TODO: have game state
+  //0: not playing
+  //1: initializing
+  //2: playing
+  int gameState = 0; //Game not playing
   
   //Creating white texture
   sf::Texture texture;
@@ -33,6 +36,7 @@ int main(int argc, char** argv)
         switch (Event.type){
             
             case sf::Event::Closed:
+                gameState = 0; //TODO: why is this necessary?
                 App.close();
                 break;
           
@@ -43,11 +47,19 @@ int main(int argc, char** argv)
     }
 
     if(ballView -> direction < 0){
-        ballView -> updateSprite(userView -> getSpritePosition());
+        gameState = ballView -> updateSprite(userView -> getSpritePosition());
     }else{
-        ballView -> updateSprite(computerView -> getSpritePosition());
+        gameState = ballView -> updateSprite(computerView -> getSpritePosition());
     }
     
+    //Match ball height with computer paddle height
+    computerView -> updateSprite(ballView -> getSpritePosition().y);
+    
+    if(gameState == 1){
+        ballView -> resetSprite();
+        userView -> resetSprite();
+        computerView -> resetSprite();
+    }
     
     //Clear screen and fill with black
     App.clear(sf::Color::Black);
