@@ -9,7 +9,6 @@ int main(int argc, char** argv)
   //Create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong", {sf::Style::Close|sf::Style::Titlebar}); //Style doesn't allow for resizing
 
-  
   //Game state
   //0: not playing
   //1: initializing
@@ -19,6 +18,7 @@ int main(int argc, char** argv)
   //Creating white texture
   sf::Texture texture;
   if(!texture.loadFromFile("../img/white.png"))
+      
       return EXIT_FAILURE;
   
   //Creating view classes
@@ -33,6 +33,7 @@ int main(int argc, char** argv)
     //Process events
     sf::Event Event;
     while(App.pollEvent(Event)){
+        
         switch (Event.type){
             
             case sf::Event::Closed:
@@ -47,15 +48,19 @@ int main(int argc, char** argv)
     }
 
     if(ballView -> direction < 0){
+        
         gameState = ballView -> updateSprite(userView -> getSpritePosition());
+        
     }else{
+        
         gameState = ballView -> updateSprite(computerView -> getSpritePosition());
+        
+        //Match ball height with computer paddle height as ball approaches
+        computerView -> updateSprite(ballView -> getSpritePosition());
     }
     
-    //Match ball height with computer paddle height
-    computerView -> updateSprite(ballView -> getSpritePosition().y);
-    
     if(gameState == 1){
+        
         ballView -> resetSprite();
         userView -> resetSprite();
         computerView -> resetSprite();

@@ -31,7 +31,7 @@ void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
             }
             break;
         case sf::Keyboard::Down:
-            if(this -> getSpritePosition().y < 516){//TODO: make this so that it compares to the window and not a hardcoded value
+            if(this -> getSpritePosition().y < this -> App -> getSize().y - 80){//TODO: make this so that it compares to the window and not a hardcoded value
                 this -> userPaddle.move(0.0, 10.0);
             }
             

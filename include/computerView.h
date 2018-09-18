@@ -15,7 +15,7 @@ class ComputerView{
         sf::Vector2f getSpritePosition();
         void drawSprite();
         void resetSprite();
-        void updateSprite(float ballHeight);
+        void updateSprite(sf::Vector2f ballPosition);//-1 if going up, 1 if going down
     
 };
 
