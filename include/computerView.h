@@ -8,16 +8,21 @@ class ComputerView{
     private:
         sf::RenderWindow *App;
         sf::Sprite computerPaddle;
-        sf::Texture texture;
+        sf::Text computerScore; 
         
     public:
-        ComputerView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
+        ComputerView(sf::RenderWindow *_App);
+        
+        void setSpriteTexture(sf::Texture texture);
+        void setScore(std::string score, sf::Font *font);
+        void setScore(std::string score);
         sf::Vector2f getSpritePosition();
-        void drawSprite();
+        
+        void draw();
         void resetSprite();
-        void updateSprite(sf::Vector2f ballPosition);//-1 if going up, 1 if going down
-    
+        void updateSprite(sf::Vector2f ballPosition, float deltaMs);//-1 if going up, 1 if going down
+        
+        int updateScore(int score);
 };
 
-#endif 
- 
+#endif

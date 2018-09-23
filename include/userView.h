@@ -8,12 +8,19 @@ class UserView{
     private:
         sf::RenderWindow *App;
         sf::Sprite userPaddle;
-        sf::Texture texture;
+        sf::Text userScore;
         
     public:
-        UserView(sf::RenderWindow *App, sf::Texture texture); //Also pass in a pointer to whatever the state of the current game is
+        
+        UserView(sf::RenderWindow *App);
+        
+        void setSpriteTexture(sf::Texture texture);
+        void setScore(std::string score, sf::Font *font);
+        void setScore(std::string score);
+        
         sf::Vector2f getSpritePosition();
-        void drawSprite();
+        
+        void draw();
         void resetSprite();
         void updateSprite(sf::Event event);
         

@@ -78,5 +78,6 @@ CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: /home/f85/lywu01/SFML/include/SF
 CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: ../bin/helloworld.cpp
 CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: ../include/ballView.h
 CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: ../include/computerView.h
+CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: ../include/gameLogic.h
 CMakeFiles/helloworld.dir/bin/helloworld.cpp.o: ../include/userView.h
 
