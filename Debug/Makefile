@@ -217,6 +217,33 @@ src/computerView.cpp.s:
 	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/computerView.cpp.s
 .PHONY : src/computerView.cpp.s
 
+src/gameLogic.o: src/gameLogic.cpp.o
+
+.PHONY : src/gameLogic.o
+
+# target to build an object file
+src/gameLogic.cpp.o:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/gameLogic.cpp.o
+.PHONY : src/gameLogic.cpp.o
+
+src/gameLogic.i: src/gameLogic.cpp.i
+
+.PHONY : src/gameLogic.i
+
+# target to preprocess a source file
+src/gameLogic.cpp.i:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/gameLogic.cpp.i
+.PHONY : src/gameLogic.cpp.i
+
+src/gameLogic.s: src/gameLogic.cpp.s
+
+.PHONY : src/gameLogic.s
+
+# target to generate assembly for a file
+src/gameLogic.cpp.s:
+	$(MAKE) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/gameLogic.cpp.s
+.PHONY : src/gameLogic.cpp.s
+
 src/userView.o: src/userView.cpp.o
 
 .PHONY : src/userView.o
@@ -263,6 +290,9 @@ help:
 	@echo "... src/computerView.o"
 	@echo "... src/computerView.i"
 	@echo "... src/computerView.s"
+	@echo "... src/gameLogic.o"
+	@echo "... src/gameLogic.i"
+	@echo "... src/gameLogic.s"
 	@echo "... src/userView.o"
 	@echo "... src/userView.i"
 	@echo "... src/userView.s"
