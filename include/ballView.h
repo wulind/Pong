@@ -16,10 +16,10 @@ class BallView{
         
         BallView(sf::RenderWindow *App); //Also pass in a pointer to whatever the state of the current game is
         
-        void setSpriteTexture(sf::Texture texture);
+        void setSpriteTexture(sf::Texture *texture);
         sf::Vector2f getSpritePosition();
         
-        void drawSprite();
+        void draw();
         void resetSprite();
         int updateSprite(float deltaMs);
     
