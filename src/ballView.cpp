@@ -7,15 +7,15 @@ BallView::BallView(sf::RenderWindow *App){
     
     this -> App = App;
     
-    this -> direction = -1;//direction is 1 if going right (towards computer), -1 if going left (towards user) TODO: coin flip
+    this -> direction = -1;//direction is 1 if going right (towards computer), -1 if going left (towards user)
     
     this -> angle[0] = -0.1;
     this -> angle[1] = 0.0;
 }
 
-void BallView::setSpriteTexture(sf::Texture texture){
+void BallView::setSpriteTexture(sf::Texture *texture){
     
-    this -> ball.setTexture(texture);
+    this -> ball.setTexture(*texture);
     ball.setTextureRect(sf::IntRect(0, 0, 10, 10));
     ball.setPosition(this -> App -> getSize().x/2, this -> App -> getSize().y/2);
 }
@@ -25,7 +25,7 @@ sf::Vector2f BallView::getSpritePosition(){
     return this -> ball.getPosition();
 }
 
-void BallView::drawSprite(){
+void BallView::draw(){
     
     (this -> App) -> draw(this -> ball);
 }
@@ -55,7 +55,7 @@ int BallView::updateSprite(float deltaMs){
     
     this -> ball.move(this -> angle[0] * deltaMs, this -> angle[1] * deltaMs);
     
-    return 2;
+    return 0;
     
 }
 

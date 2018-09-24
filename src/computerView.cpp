@@ -6,8 +6,8 @@ ComputerView::ComputerView(sf::RenderWindow *App){
     this -> App = App;
 }
 
-void ComputerView::setSpriteTexture(sf::Texture texture){
-    this -> computerPaddle.setTexture(texture);
+void ComputerView::setSpriteTexture(sf::Texture *texture){
+    this -> computerPaddle.setTexture(*texture);
     this -> computerPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
     this -> computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);   
 }
@@ -62,4 +62,7 @@ void ComputerView::updateSprite(sf::Vector2f ballPosition, float deltaMs){//-1 i
     
 }
 
+void ComputerView::reset(){
+    this -> computerScore.setString("0");
+}
 

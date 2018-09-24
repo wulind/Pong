@@ -35,18 +35,24 @@ int GameLogic::gameLoop(){
     if (!font.loadFromFile("../data/arial.ttf"))
         return EXIT_FAILURE;
     
-    this -> userView -> setSpriteTexture(texture);
-    this -> computerView -> setSpriteTexture(texture);
-    this -> ballView -> setSpriteTexture(texture);
+    this -> userView -> setSpriteTexture(&texture);
+    this -> computerView -> setSpriteTexture(&texture);
+    this -> ballView -> setSpriteTexture(&texture);
+    
+    this -> userView -> showTitle(&font);
     
     this -> userView -> setScore(std::to_string(this -> userScore), &font);
     this -> computerView -> setScore(std::to_string(this -> computerScore), &font);
     this -> clock.restart();
     
+    
     // start main loop
     while(this -> App -> isOpen()){
         
-        this -> pageState = 0;
+        if(this -> pageState == 1){
+            this -> pageState = 0;
+        }
+        
         //Process events
         sf::Event Event;
         while(this -> App -> pollEvent(Event)){
@@ -59,11 +65,44 @@ int GameLogic::gameLoop(){
                     break;
             
                 case sf::Event::KeyPressed:
+                    if (Event.key.code == sf::Keyboard::R){
+                        this -> pageState = 1;
+                        this -> userScore = 0;
+                        this -> computerScore = 0;
+                        this -> userView -> reset();
+                        this -> computerView -> reset();
+                        
+                        this -> ballView -> direction = -1;
+                        
+                        this -> userView -> showTitle(&font);
+                        break;
+                    }
+                    
+                    if (Event.key.code == sf::Keyboard::P){
+                        if (this -> pageState == 2){
+                            this -> pageState = 0;
+                        }else{
+                            this -> pageState = 2;
+                        }
+                        break;
+                    }
+                    
+                    this -> userView -> hideTitle();
+                    
                     this -> userView -> updateSprite(Event); //Accesses exact key pressed
+                    break;
+                
+                case sf::Event::LostFocus:
+                    this -> pageState = 2;
+                    break;
+                    
+                case sf::Event::GainedFocus:
+                    this -> pageState = 0;
                     break;
             }
         }
 
+        
         if(this -> pageState == 0){//Playing game
             this -> detectCollision();
             this -> pageState = this -> ballView -> updateSprite(timeElapsed);
@@ -73,7 +112,7 @@ int GameLogic::gameLoop(){
                 this -> computerView -> updateSprite(this -> ballView -> getSpritePosition(), timeElapsed);
             }
         }
-        
+
         if(this -> pageState == 1){//someone scored
             this -> updateScore(); 
             
@@ -84,11 +123,20 @@ int GameLogic::gameLoop(){
         
         //Clear screen and fill with black
         this -> App -> clear(sf::Color::Black);
+        
+        if(this -> userScore >= 11){
             
-        //Draw paddles & ball
+            this -> userView -> win(&font);
+            this -> pageState = 2;
+        }else if(this -> computerScore >= 11){
+            
+            this -> userView -> lose(&font);
+            this -> pageState = 2;
+        }
+            
         this -> computerView -> draw();
         this -> userView -> draw();
-        this -> ballView -> drawSprite();
+        this -> ballView -> draw();
             
         //Display
         this -> App -> display();
@@ -173,12 +221,20 @@ void GameLogic::findBallAngle(sf::Vector2f ballLocation, sf::Vector2f paddleLoca
     this -> ballView -> angle[0] = 0.0005 * this -> ballView -> direction;
 }
 
+/*Updates score when someone scores
+ */
 void GameLogic::updateScore(){
-    if(this -> ballView -> direction == 1){
-        ++this -> userScore;
-        this -> userView -> setScore(std::to_string(this -> userScore));
-    }else{
-        ++this -> computerScore;
-        this -> computerView -> setScore(std::to_string(this -> computerScore));
+    if(this -> userScore < 11 && this -> computerScore < 11){
+        
+        if(this -> ballView -> direction == 1){
+            ++this -> userScore;
+            this -> userView -> setScore(std::to_string(this -> userScore));
+        
+        }else{
+            ++this -> computerScore;
+            this -> computerView -> setScore(std::to_string(this -> computerScore));
+        
+        }
     }
+    
 }

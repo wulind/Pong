@@ -12,7 +12,7 @@ class GameLogic{
         sf::RenderWindow *App;
         sf::Clock clock;
         int userScore, computerScore;
-        int pageState;//0 if not playing, 1 if playing, 2 if home page
+        int pageState;//0 if playing, 1 if reset, 2 if paused
         
         //View classes
         UserView *userView;
