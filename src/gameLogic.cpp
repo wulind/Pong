@@ -1,6 +1,7 @@
 #include "../include/gameLogic.h" 
-#include <iostream>
 
+/* @param App: pointer to Render Window application
+ */
 GameLogic::GameLogic(sf::RenderWindow *_App){
     
     this -> App = _App;
@@ -17,12 +18,16 @@ GameLogic::GameLogic(sf::RenderWindow *_App){
     this -> ballView = new BallView(_App);
 }
 
+/* Deconstructer
+ */
 GameLogic::~GameLogic(){
     delete this -> userView;
     delete this -> computerView;
     delete this -> ballView;
 }
 
+/* Main loop for pong game
+ */
 int GameLogic::gameLoop(){
     float timeElapsed;
     
@@ -149,7 +154,6 @@ int GameLogic::gameLoop(){
 
 /* Detects collision between ball & paddle
  * Returns 1 if collision detected, else returns 0
- * @paddleLocation: x & y coordinates of paddle that ball is headed towards
  */
 int GameLogic::detectCollision(){
     
@@ -185,6 +189,8 @@ int GameLogic::detectCollision(){
 
 
 /* Finds angle that ball travels at if there is a collision between ball & paddle
+ * @param ballLocation: location of ball
+ * @param paddleLocation: location of relevant paddle
  */
 void GameLogic::findBallAngle(sf::Vector2f ballLocation, sf::Vector2f paddleLocation){
     

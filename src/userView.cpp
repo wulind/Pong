@@ -1,17 +1,26 @@
 #include "../include/userView.h" 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
+/* @param App: pointer to Render Window application
+ */
 UserView::UserView(sf::RenderWindow *App){
     this -> App = App;
 }
 
+/* Sets texture of paddle (among other things that are set values)
+ * @param texture: pointer to the desired texture
+ */
 void UserView::setSpriteTexture(sf::Texture *texture){
     this -> userPaddle.setTexture(*texture);
     this -> userPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
     this -> userPaddle.setPosition(10.0, this -> App -> getSize().y/2 - 40);
 }
 
+/* Sets font of score text (among other things that are set values)
+ * Sets current score value
+ * @param score: current score for user
+ * @param font: pointer to the desired font
+ */
 void UserView::setScore(std::string score, sf::Font *font){
     this -> userScore.setFont(*font);
     this -> userScore.setString(score);
@@ -19,20 +28,29 @@ void UserView::setScore(std::string score, sf::Font *font){
     this -> userScore.setPosition(100, 50);
 }
 
+/* Updates user score value
+ * @param score: current user score
+ */
 void UserView::setScore(std::string score){
     this -> userScore.setString(score);
 }
 
+/* Returns current position of user user Paddle
+ */
 sf::Vector2f UserView::getSpritePosition(){
     return this -> userPaddle.getPosition();
 }
 
-
+/* Resets user paddle position
+ */
 void UserView::resetSprite(){
     this -> userPaddle.setPosition(10.0, this -> App -> getSize().y/2 - 40);
 }
 
-void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
+/* Moves user paddle as dictated by user key input
+ * @param event: key push event
+ */
+void UserView::updateSprite(sf::Event event){
     switch (event.key.code){
         
         case sf::Keyboard::Up:
@@ -44,7 +62,7 @@ void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
         
         case sf::Keyboard::Down:
             
-            if(this -> getSpritePosition().y < this -> App -> getSize().y - 80){//TODO: make this so that it compares to the window and not a hardcoded value
+            if(this -> getSpritePosition().y < this -> App -> getSize().y - 80){
                 this -> userPaddle.move(0.0, 11.0);
             }
             
@@ -52,12 +70,17 @@ void UserView::updateSprite(sf::Event event){//TODO: make so that key is passed?
     }
 }
 
+/* Draws user paddle, score text, and title if applicable
+ */
 void UserView::draw(){
     (this -> App) -> draw(this -> userPaddle);
     (this -> App) -> draw(this -> userScore);
     (this -> App) -> draw(this -> title);
 }
 
+/* Sets pong title text to show when drawn
+ * @param font: pointer to the desired font 
+ */
 void UserView::showTitle(sf::Font *font){
     this -> title.setFont(*font);
     this -> title.setString("Pong (To pause, press 'p')");
@@ -67,10 +90,15 @@ void UserView::showTitle(sf::Font *font){
 
 }
 
+/* Hides pong title text if playing
+ */
 void UserView::hideTitle(){
     this -> title.setString("");
 }
 
+/* Sets winning text to show when drawn
+ * @param font: pointer to the desired font 
+ */
 void UserView::win(sf::Font *font){
     this -> winLose.setFont(*font);
     this -> winLose.setString("Winner (To restart press 'r')");
@@ -81,6 +109,9 @@ void UserView::win(sf::Font *font){
     this -> App -> draw(this -> winLose);
 }
 
+/* Sets losing text to show when drawn
+ * @param font: pointer to the desired font 
+ */
 void UserView::lose(sf::Font *font){
     this -> winLose.setFont(*font);
     this -> winLose.setString("Loser (To restart press 'r')");
@@ -91,6 +122,8 @@ void UserView::lose(sf::Font *font){
     this -> App -> draw(this -> winLose);
 }
 
+/* Resets entire user game
+ */
 void UserView::reset(){
     this -> userScore.setString("0");
     this -> winLose.setString("");

@@ -1,18 +1,26 @@
 #include "../include/computerView.h" 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
+/*@param App: pointer to Render Window application
+ */
 ComputerView::ComputerView(sf::RenderWindow *App){
     this -> App = App;
 }
 
+/* Sets texture of paddle (among other things that are set values)
+ * @param texture: pointer to the desired texture
+ */
 void ComputerView::setSpriteTexture(sf::Texture *texture){
     this -> computerPaddle.setTexture(*texture);
     this -> computerPaddle.setTextureRect(sf::IntRect(0, 0, 10, 80));
     this -> computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);   
 }
 
-
+/* Sets font of score text (among other things that are set values)
+ * Sets current score value
+ * @param score: current score for computer
+ * @param font: pointer to the desired font
+ */
 void ComputerView::setScore(std::string score, sf::Font *font){
     this -> computerScore.setFont(*font);
     this -> computerScore.setString(score);
@@ -20,10 +28,15 @@ void ComputerView::setScore(std::string score, sf::Font *font){
     this -> computerScore.setPosition(700, 50);
 }
 
+/* Updates user score value
+ * @param score: current computer score
+ */
 void ComputerView::setScore(std::string score){
     this -> computerScore.setString(score);
 }
 
+/* Returns current position of user computer Paddle
+ */
 sf::Vector2f ComputerView::getSpritePosition(){
     return this -> computerPaddle.getPosition();
 }
@@ -34,10 +47,16 @@ void ComputerView::draw(){
     (this -> App) -> draw(this -> computerScore);
 }
 
+/* Resets user paddle position
+ */
 void ComputerView::resetSprite(){
     this -> computerPaddle.setPosition(780.0, this -> App -> getSize().y/2 - 40);
 }
 
+/* Moves user paddle as dictated by ball movement
+ * @param ballPosition: location of ball
+ * @param deltaMs: miliseconds that have gone by since last loop (make up for computer speeds)
+ */
 void ComputerView::updateSprite(sf::Vector2f ballPosition, float deltaMs){//-1 if going up, 1 if going down
     sf::Vector2f paddlePosition = this -> getSpritePosition();
     
@@ -62,6 +81,8 @@ void ComputerView::updateSprite(sf::Vector2f ballPosition, float deltaMs){//-1 i
     
 }
 
+/* Resets entire computer View
+ */
 void ComputerView::reset(){
     this -> computerScore.setString("0");
 }

@@ -1,8 +1,8 @@
 #include "../include/ballView.h" 
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <math.h>
 
+/*@param App: pointer to Render Window application
+ */
 BallView::BallView(sf::RenderWindow *App){
     
     this -> App = App;
@@ -13,6 +13,9 @@ BallView::BallView(sf::RenderWindow *App){
     this -> angle[1] = 0.0;
 }
 
+/* Sets texture of ball (among other things that are set values)
+ * @param texture: pointer to the desired texture
+ */
 void BallView::setSpriteTexture(sf::Texture *texture){
     
     this -> ball.setTexture(*texture);
@@ -20,16 +23,22 @@ void BallView::setSpriteTexture(sf::Texture *texture){
     ball.setPosition(this -> App -> getSize().x/2, this -> App -> getSize().y/2);
 }
 
+/* Returns current position of user user Paddle
+ */
 sf::Vector2f BallView::getSpritePosition(){
     
     return this -> ball.getPosition();
 }
 
+/* Draws user paddle, score text, and title if applicable
+ */
 void BallView::draw(){
     
     (this -> App) -> draw(this -> ball);
 }
 
+/* Resets ball direction and position
+ */
 void BallView::resetSprite(){
     
     this -> direction = -1;
@@ -37,7 +46,7 @@ void BallView::resetSprite(){
 }
 
 /* Moves ball across screen
- * @paddleLocation: x & y coordinates of paddle that ball is headed towards
+ * @param paddleLocation: x & y coordinates of paddle that ball is headed towards
  */
 int BallView::updateSprite(float deltaMs){
     
